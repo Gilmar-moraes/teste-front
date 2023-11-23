@@ -1,4 +1,3 @@
-// album-list.component.ts
 import { Component, OnInit } from '@angular/core';
 import { AlbumService } from '../album.service';
 import { PhotoService } from '../photo.service';
@@ -25,8 +24,6 @@ export class AlbumListComponent implements OnInit {
 
   getAlbumThumbnail(albumId: number): string {
     let thumbnailUrl = '';
-
-    // Obter a URL da primeira foto do álbum
     this.photoService.getFirstPhotoByAlbumId(albumId).subscribe((photo) => {
       thumbnailUrl = photo[0].url;
     });
@@ -35,9 +32,7 @@ export class AlbumListComponent implements OnInit {
   }
 
   showAlbumPhotos(albumId: number): void {
-    // Obter as 10 primeiras fotos do álbum
     this.photoService.getFirstTenPhotosByAlbumId(albumId).subscribe((photos) => {
-      // Agora, você pode trabalhar com as 10 primeiras fotos, por exemplo, exibi-las em algum lugar
       console.log('Primeiras 10 fotos do álbum:', photos);
     });
   }
